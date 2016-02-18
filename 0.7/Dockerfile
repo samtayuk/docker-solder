@@ -24,3 +24,5 @@ COPY default.app.php default.database.php default.solder.php /app/
 COPY 10-solder.sh /app/firstrun/
 
 COPY default.conf /etc/nginx/conf.d/
+
+VOLUME ["/app/solder/app/storage", "/data", "/app/solder/app/config"]
