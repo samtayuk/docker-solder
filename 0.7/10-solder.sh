@@ -19,7 +19,7 @@ fi
 if [ -z "$MIRROR_URL" ]
 then
     echo "  ** MIRROR_URL not defined, defaulting to $BASE_URL/files"
-    MIRROR_URL="$BASE_URL/files"
+    MIRROR_URL="$BASE_URL/files/"
 fi
 
 if [ -z "$TIME_ZONE" ]
@@ -47,7 +47,7 @@ if [ ! -e '/config/app.php' ]; then
     echo "  ** Copying default app config file"
     cp /app/default.app.php /config/app.php
     chown www-data:www-data /config/app.php
-    sed -i s/BASE_URL/${BASE_URL}/g /config/app.php
+    sed -i s,BASE_URL,${BASE_URL},g /config/app.php
     sed -i s/TIME_ZONE/${TIME_ZONE}/g /config/app.php
     sed -i s/LANG/${LANG}/g /config/app.php
     sed -i s/SUPASECRT/${CRYPT_KEY}/g /config/app.php
